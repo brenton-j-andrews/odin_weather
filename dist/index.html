@@ -4,10 +4,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Odin Weather App</title>
     <script src="./main.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    
+
+    <div class="upper_content">
+        <!-- Upper left -> Broad overview / search bar -->
+        <div class="upper_content_left">
+
+            <!-- Location name and broad weather overview -->
+            <div class="location_overview">
+                <h2 class="location" id="location"></h2>
+                <h3 class="weather_overview" id="weather_overview"></h3>
+            </div>
+
+
+            <div class="search_bar">
+                <label for="location_input">Enter location:</label>
+                <input type="text" name="location_input" id="location_input" value="Salt Lake City">
+                <button id="btn">Press to get the weather!</button>
+            </div>
+        </div>
+
+        <div class="upper_content_right">
+            this div will have current weather details!
+        </div>
+    </div>
+
+    <div class="middle_content">
+        this is the middle content section -> hourly forecast!
+    </div>
+
+    <div class="lower_content">
+        this is the lower content section -> weekly forecast!
+    </div>
+
 </body>
+
 </html>

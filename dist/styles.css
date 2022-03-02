@@ -1,0 +1,59 @@
+/* General page styling and constants */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    min-height: 100vh;
+
+    background-color: red;
+}
+
+
+/* Upper content styling */
+.upper_content,
+.middle_content,
+.lower_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25vh;
+    width: 100%;
+
+    border: 3px solid black;
+}
+
+
+.upper_content_left,
+.upper_content_right {
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+    width: 50%;
+}
+
+.upper_content_left {
+
+    background-color: green;
+}
+
+.search_bar {
+    
+}
+
+.upper_content_right {
+    background-color: red;
+}
+
+
+/* Middle and lower content styling */
+.middle_content,
+.lower_content {
+    height: 33vh;
+    width: 100%;
+}
