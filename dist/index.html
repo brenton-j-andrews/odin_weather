@@ -16,10 +16,11 @@
         <div class="upper_content_left">
             <!-- Location name and broad weather overview -->
             <div class="location_overview">
-                <h2 class="location" id="location"></h2>
+                <h2 class="location_header" id="location_header"></h2>
                 <h3 class="weather_overview" id="weather_overview"></h3>
                 <img alt="Weather Icon" id="weather_icon">
             </div>
+
             <div class="search_bar">
                 <input type="text" name="location_input" id="location_input" onfocus="this.value=''" value="Enter a city...">
                 <button id="search_btn">Get the weather!</button>
@@ -30,20 +31,31 @@
         <div class="upper_content_right">
 
             <div class="current_weather_container">
-                It feels like
-                <div id="current_temp"></div>
-            </div>
-            
-            <div class="current_weather_container" id="high_temp">
-            </div>
-            <div class="current_weather_container" id="low_temp">
-            </div>
-            <div class="current_weather_container" id="humidity">
-            </div>
-            <div class="current_weather_container" id="wind_data">
+                <p class="data_lead">It feels like </p>
+                <p class="weather_data temp" id="current_temp"></p>
             </div>
 
-            <button id="toggle_units_btn">Change Units</button>
+            <div class="current_weather_container">
+                <p class="data_lead">It could get up to </p>
+                <p class="weather_data temp" id="high_temp"></p>
+            </div>
+
+            <div class="current_weather_container">
+                <p class="data_lead">And as low as </p>
+                <p class="weather_data temp" id="low_temp"></p>
+            </div>
+
+            <div class="current_weather_container">
+                <p class="data_lead">Humidity: </p>
+                <p class="weather_data" id="humidity"></p>
+            </div>
+
+            <div class="current_weather_container">
+                <p class="data_lead">Wind: </p>
+                <p class="weather_data wind" id="wind_data"></p>
+            </div>
+
+            <button id="toggle_units_btn">Display Metric</button>
         </div>
 
 

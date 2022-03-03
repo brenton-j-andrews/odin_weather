@@ -22,7 +22,7 @@ body {
 }
 
 .content_wrapper > * {
-    padding: 50px 25px 50px 25px;
+    padding: 50px 25px 25px 25px;
 }
 
 
@@ -40,13 +40,39 @@ body {
     background-color: yellow;
 }
 
-/* Metric / Imperial Units toggle */
-.current_weather_container {
-    display: inline;
+.upper_content_right {
+    display: flex;
+    flex-direction: column;
 }
 
-.data {
-    display: inline;
+.current_weather_container {
+    display: flex;
+    align-items: center;
+}
+
+.data_lead {
+    font-size: 12px;
+}
+
+.weather_data {
+    font-size: 24px;
+}
+
+/* Metric / Imperial Units toggle */
+.weather_data.temp::after {
+    content: "° F";
+}
+
+.weather_data.temp.metric::after {
+    content: "° C";
+}
+
+.weather_data.wind::after {
+    content: " mph";
+}
+
+.weather_data.wind.metric::after {
+    content: " km/h";
 }
 
 
