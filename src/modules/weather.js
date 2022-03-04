@@ -1,12 +1,12 @@
 // Functions to fetch and parse weather data.
-async function fetchWeatherData(api_url) {
+async function fetchCurrentData(api_url) {
     
     try {
         const response = await fetch(api_url, {mode: 'cors'});
         if (!response.ok) {
             console.log(`City ${location} isn't valid, try again!`);
         }
-        const weatherData = parseWeatherData(await response.json());
+        const weatherData = parseCurrentData(await response.json());
         return weatherData;
     }
 
@@ -15,10 +15,34 @@ async function fetchWeatherData(api_url) {
     }
 }
 
-function parseWeatherData(response) {
-    console.log(response);
+
+// Hourly and 7 day forecast API call.
+async function fetchForecastData(api_url) {
+
+    try {
+        const response = await fetch(api_url, {mode: 'cors'});
+        
+        if (!response.ok) {
+            console.log(`Invalid API call, for now...`);
+        }
+
+        const weatherData = await response.json();
+        return weatherData;
+    }
+
+    catch(error) {
+        console.log("are we in error zone");
+        console.log("Error: " + error);
+    }
+}
+
+
+// parseCurrentData parses current weather data, and returns lat / long arguments to be used for forecast API call.
+function parseCurrentData(response) {
     const weatherData = {
         "location": response.name + ", " + response.sys.country,
+        "latitude": response.coord.lat,
+        "longitude": response.coord.lon,
         "current_weather": response.weather[0].description,
         "current_weather_icon_code": response.weather[0].icon,
         "current_temp": Math.round(response.main.temp),
@@ -33,6 +57,7 @@ function parseWeatherData(response) {
     return weatherData;
 }
 
+
 // Convert wind direction (in degrees) to cardinal points.
 function degreesToCardinal(degrees) {
     let cardinal_directions = ["North", "Northeast", "East", "Southeast", "South", "Southwest", "West", "Northwest"];
@@ -40,4 +65,8 @@ function degreesToCardinal(degrees) {
     return cardinal_directions[index];
 }
 
-export default fetchWeatherData;
+
+export {
+    fetchCurrentData,
+    fetchForecastData
+};

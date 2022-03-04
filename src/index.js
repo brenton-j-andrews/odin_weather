@@ -1,4 +1,4 @@
-import fetchWeatherData from "./modules/weather";
+import * as weatherFunctions from "./modules/weather";
 import * as domFunctions from "./modules/dom";
 
 // Default settings.
@@ -15,7 +15,6 @@ search_button.addEventListener("click", function() {
 let toggle_units_button = document.getElementById("toggle_units_btn");
 toggle_units_button.addEventListener("click", function() {
     let city = document.getElementById("location_header").innerText;
-    domFunctions.toggleUnits(isMetric);
 
     if (isMetric) {
         loadWeather(city, 0);
@@ -23,6 +22,7 @@ toggle_units_button.addEventListener("click", function() {
         loadWeather(city, 1);
     }
 
+    domFunctions.toggleUnits(isMetric);
     isMetric = !isMetric;
 });
 
@@ -32,12 +32,19 @@ async function loadWeather(city, unit_index) {
     // Build API URL.
     let key = "40117561b027d65aef26e6f9f3621abe";
     let units = ["imperial", "metric"];
-    let api_url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units[unit_index]}&APPID=${key}`;
 
-    // Pass URL, receive weather data object!
-    let weatherData = await fetchWeatherData(api_url);
-    domFunctions.updateDOM(weatherData);
+
+    // Pass URLs, receive weather data objects, populate the DOM!
+    let api_url_current = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units[unit_index]}&APPID=${key}`;
+    let weatherData = await weatherFunctions.fetchCurrentData(api_url_current);
+
+    let api_url_forecast = `https://api.openweathermap.org/data/2.5/onecall?lat=${weatherData.latitude}&lon=${weatherData.longitude}&units=${units[unit_index]}&appid=${key}`;
+    let forecastData = await weatherFunctions.fetchForecastData(api_url_forecast);
+
+    domFunctions.updateCurrentWeatherDOM(weatherData);
+    domFunctions.updateForecastDOM(forecastData)
 }
+
 
 // Initial function call to populate page upon loading. Default load with imperial units.
 loadWeather("Salt Lake City", 0);
