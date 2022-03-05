@@ -9,6 +9,9 @@ function updateCurrentWeatherDOM(weatherData) {
     let weather_icon = document.getElementById("weather_icon");
     weather_icon.src = `http://openweathermap.org/img/wn/${weatherData.current_weather_icon_code}@2x.png`
 
+    let summary_temp = document.getElementById("summary_temp");
+    summary_temp.textContent = weatherData.current_temp;
+
     let current_temp = document.getElementById("current_temp");
     current_temp.textContent =  weatherData.current_temp;
 
@@ -27,7 +30,7 @@ function updateCurrentWeatherDOM(weatherData) {
 
 
 function updateForecastDOM(forecastData) {
-    console.log(forecastData.hourly[0]);
+
     // Populate middle section -> Hourly forecast (12 hours). as updeteForecastDOM
 
     // T + 1 hour.

@@ -1,3 +1,5 @@
+import * as util from "./utilities";
+
 // Functions to fetch and parse weather data.
 async function fetchCurrentData(api_url) {
     
@@ -27,6 +29,7 @@ async function fetchForecastData(api_url) {
         }
 
         const weatherData = await response.json();
+        console.log(weatherData);
         return weatherData;
     }
 
@@ -50,19 +53,11 @@ function parseCurrentData(response) {
         "high_temp": Math.round(response.main.temp_max),
         "low_temp": Math.round(response.main.temp_min),
         "humidity": Math.round(response.main.humidity) + "%",
-        "wind_dir": degreesToCardinal(response.wind.deg) + ` (${response.wind.deg}°)`,
+        "wind_dir": util.degreesToCardinal(response.wind.deg) + ` (${response.wind.deg}°)`,
         "wind_speed": Math.round(response.wind.speed)
     }
 
     return weatherData;
-}
-
-
-// Convert wind direction (in degrees) to cardinal points.
-function degreesToCardinal(degrees) {
-    let cardinal_directions = ["North", "Northeast", "East", "Southeast", "South", "Southwest", "West", "Northwest"];
-    let index = Math.floor((degrees / 360) * 8);
-    return cardinal_directions[index];
 }
 
 

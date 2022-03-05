@@ -1,5 +1,6 @@
 import * as weatherFunctions from "./modules/weather";
 import * as domFunctions from "./modules/dom";
+import * as util from "./modules/utilities";
 
 // Default settings.
 let isMetric = false;
@@ -22,7 +23,7 @@ toggle_units_button.addEventListener("click", function() {
         loadWeather(city, 1);
     }
 
-    domFunctions.toggleUnits(isMetric);
+    util.toggleUnits(isMetric);
     isMetric = !isMetric;
 });
 

@@ -35,14 +35,20 @@ body {
     grid-area: 1 / 2 / 2 / 3;
 }
 
-.upper_content_left,
-.upper_content_right {
+.upper_content_left {
     background-color: yellow;
+}
+
+.weather_summary {
+    display: flex;
+    align-items: center;
 }
 
 .upper_content_right {
     display: flex;
     flex-direction: column;
+
+    background-color: yellow;
 }
 
 .current_weather_container {
