@@ -8,6 +8,7 @@ async function fetchCurrentData(api_url) {
         if (!response.ok) {
             console.log(`City ${location} isn't valid, try again!`);
         }
+    
         const weatherData = parseCurrentData(await response.json());
         return weatherData;
     }
@@ -29,7 +30,6 @@ async function fetchForecastData(api_url) {
         }
 
         const weatherData = await response.json();
-        console.log(weatherData);
         return weatherData;
     }
 
@@ -44,6 +44,7 @@ async function fetchForecastData(api_url) {
 function parseCurrentData(response) {
     const weatherData = {
         "location": response.name + ", " + response.sys.country,
+        "datetime": response.dt,
         "latitude": response.coord.lat,
         "longitude": response.coord.lon,
         "current_weather": response.weather[0].description,

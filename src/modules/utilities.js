@@ -1,4 +1,7 @@
 // Module for datetime functions and unit conversion.
+import { format } from 'date-fns';
+import toDate from 'date-fns/fromUnixTime';
+
 
 // Convert wind direction (in degrees) to cardinal points.
 function degreesToCardinal(degrees) {
@@ -24,7 +27,29 @@ function toggleUnits(isMetric) {
     })
 }
 
+
+// unixToDate converts utc Datetime to date format, which is parsed and returned as an object.
+function unixToDate(unixDt) {
+    console.log(unixDt);
+    const date = toDate(unixDt);
+
+    console.log(date);
+    const formatted_date = format(date, "iiii, MMMM do yyyy");
+    console.log(formatted_date);
+
+    const local_time = format(date, "HH:mm");
+
+    const date_information = {
+        "month_day_year": formatted_date,
+        "local_time": local_time
+    }
+
+    return date_information;
+}
+
+
 export {
     degreesToCardinal,
-    toggleUnits
+    toggleUnits,
+    unixToDate
 };
