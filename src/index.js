@@ -2,6 +2,7 @@ import * as weatherFunctions from "./modules/weather";
 import * as domFunctions from "./modules/dom";
 import * as util from "./modules/utilities";
 
+
 // Default settings.
 let isMetric = false;
 
@@ -38,11 +39,12 @@ async function loadWeather(city, unit_index) {
     // Pass URLs, receive weather data objects, populate the DOM!
     let api_url_current = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units[unit_index]}&APPID=${key}`;
     let weatherData = await weatherFunctions.fetchCurrentData(api_url_current);
-    let dateTimeData = util.unixToDate(weatherData.datetime);
-    
+
     let api_url_forecast = `https://api.openweathermap.org/data/2.5/onecall?lat=${weatherData.latitude}&lon=${weatherData.longitude}&units=${units[unit_index]}&appid=${key}`;
     let forecastData = await weatherFunctions.fetchForecastData(api_url_forecast);
-    
+    let dateTimeData = util.unixToDate(forecastData.current.dt);
+    console.log(forecastData);
+
     domFunctions.updateCurrentWeatherDOM(weatherData);
     domFunctions.updateDateTimeDOM(dateTimeData);
     domFunctions.updateForecastDOM(forecastData);

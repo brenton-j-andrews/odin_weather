@@ -31,6 +31,7 @@ function updateCurrentWeatherDOM(weatherData) {
     wind_data.textContent = `${weatherData.wind_dir} at ${weatherData.wind_speed}`
 }
 
+
 function updateDateTimeDOM(dateTime) {
     console.log(dateTime);
     let current_date = document.getElementById("current_date");
@@ -44,7 +45,7 @@ function updateDateTimeDOM(dateTime) {
 
 function updateForecastDOM(forecastData) {
 
-    // Populate middle section -> Hourly forecast (12 hours) as updeteForecastDOM
+    // Populate middle section -> Hourly forecast (12 hours).
 
     // T + 1 hour.
     let hour_1 = document.getElementById("hour_1");
@@ -110,9 +111,98 @@ function updateForecastDOM(forecastData) {
     let hourly_icon_8 = document.getElementById("hourly_icon_8");
     hourly_icon_8.src = `http://openweathermap.org/img/wn/${forecastData.hourly[7].weather[0].icon}@2x.png`;
 
+    //  T + 9 hours.
+    let hour_9 = document.getElementById("hour_9");
+    hour_9.textContent = util.unixToDate(forecastData.hourly[9].dt).local_time;
+    let hourly_temp_9 = document.getElementById("hourly_temp_9");
+    hourly_temp_9.textContent = Math.round(forecastData.hourly[8].temp);
+    let hourly_icon_9 = document.getElementById("hourly_icon_9");
+    hourly_icon_9.src = `http://openweathermap.org/img/wn/${forecastData.hourly[8].weather[0].icon}@2x.png`;
+
+    //  T + 10 hours.
+    let hour_10 = document.getElementById("hour_10");
+    hour_10.textContent = util.unixToDate(forecastData.hourly[10].dt).local_time;
+    let hourly_temp_10 = document.getElementById("hourly_temp_10");
+    hourly_temp_10.textContent = Math.round(forecastData.hourly[10].temp);
+    let hourly_icon_10 = document.getElementById("hourly_icon_10");
+    hourly_icon_10.src = `http://openweathermap.org/img/wn/${forecastData.hourly[9].weather[0].icon}@2x.png`;
+
+    //  T + 11 hours.
+    let hour_11 = document.getElementById("hour_11");
+    hour_11.textContent = util.unixToDate(forecastData.hourly[11].dt).local_time;
+    let hourly_temp_11 = document.getElementById("hourly_temp_11");
+    hourly_temp_11.textContent = Math.round(forecastData.hourly[11].temp);
+    let hourly_icon_11 = document.getElementById("hourly_icon_11");
+    hourly_icon_11.src = `http://openweathermap.org/img/wn/${forecastData.hourly[10].weather[0].icon}@2x.png`;
+
+    //  T + 12 hours.
+    let hour_12 = document.getElementById("hour_12");
+    hour_12.textContent = util.unixToDate(forecastData.hourly[12].dt).local_time;
+    let hourly_temp_12 = document.getElementById("hourly_temp_12");
+    hourly_temp_12.textContent = Math.round(forecastData.hourly[12].temp);
+    let hourly_icon_12 = document.getElementById("hourly_icon_12");
+    hourly_icon_12.src = `http://openweathermap.org/img/wn/${forecastData.hourly[11].weather[0].icon}@2x.png`;
+
+
+    // Populate lower section -> Daily forecast (7 days).
+
+    // Current day + 1.
+    let day_1 = document.getElementById("day_1");
+    day_1.textContent = util.unixToDate(forecastData.daily[1].dt).day_of_week;
+    let day_temp_1 = document.getElementById("day_temp_1");
+    day_temp_1.textContent = `${Math.round(forecastData.daily[1].temp.min)} / ${Math.round(forecastData.daily[1].temp.max)}`;
+    let day_icon_1 = document.getElementById("day_icon_1");
+    day_icon_1.src = `http://openweathermap.org/img/wn/${forecastData.daily[1].weather[0].icon}@2x.png`;
+
+    // Current day + 2.
+    let day_2 = document.getElementById("day_2");
+    day_2.textContent = util.unixToDate(forecastData.daily[2].dt).day_of_week;
+    let day_temp_2 = document.getElementById("day_temp_2");
+    day_temp_2.textContent = `${Math.round(forecastData.daily[2].temp.min)} / ${Math.round(forecastData.daily[1].temp.max)}`;
+    let day_icon_2 = document.getElementById("day_icon_2");
+    day_icon_2.src = `http://openweathermap.org/img/wn/${forecastData.daily[2].weather[0].icon}@2x.png`;
+
+    // Current day + 3.
+    let day_3 = document.getElementById("day_3");
+    day_3.textContent = util.unixToDate(forecastData.daily[3].dt).day_of_week;
+    let day_temp_3 = document.getElementById("day_temp_3");
+    day_temp_3.textContent = `${Math.round(forecastData.daily[3].temp.min)} / ${Math.round(forecastData.daily[1].temp.max)}`;
+    let day_icon_3 = document.getElementById("day_icon_3");
+    day_icon_3.src = `http://openweathermap.org/img/wn/${forecastData.daily[3].weather[0].icon}@2x.png`;
+
+     // Current day + 4.
+     let day_4 = document.getElementById("day_4");
+     day_4.textContent = util.unixToDate(forecastData.daily[4].dt).day_of_week;
+     let day_temp_4 = document.getElementById("day_temp_4");
+     day_temp_4.textContent = `${Math.round(forecastData.daily[4].temp.min)} / ${Math.round(forecastData.daily[1].temp.max)}`;
+     let day_icon_4 = document.getElementById("day_icon_4");
+     day_icon_4.src = `http://openweathermap.org/img/wn/${forecastData.daily[4].weather[0].icon}@2x.png`;
+
+    // Current day + 5.
+    let day_5 = document.getElementById("day_5");
+    day_5.textContent = util.unixToDate(forecastData.daily[5].dt).day_of_week;
+    let day_temp_5 = document.getElementById("day_temp_5");
+    day_temp_5.textContent = `${Math.round(forecastData.daily[5].temp.min)} / ${Math.round(forecastData.daily[1].temp.max)}`;
+    let day_icon_5 = document.getElementById("day_icon_5");
+    day_icon_5.src = `http://openweathermap.org/img/wn/${forecastData.daily[5].weather[0].icon}@2x.png`;
+
+    // Current day + 6.
+    let day_6 = document.getElementById("day_6");
+    day_6.textContent = util.unixToDate(forecastData.daily[6].dt).day_of_week;
+    let day_temp_6 = document.getElementById("day_temp_6");
+    day_temp_6.textContent = `${Math.round(forecastData.daily[6].temp.min)} / ${Math.round(forecastData.daily[1].temp.max)}`;
+    let day_icon_6 = document.getElementById("day_icon_6");
+    day_icon_6.src = `http://openweathermap.org/img/wn/${forecastData.daily[6].weather[0].icon}@2x.png`;
+
+    // Current day + 7.
+    let day_7 = document.getElementById("day_7");
+    day_7.textContent = util.unixToDate(forecastData.daily[7].dt).day_of_week;
+    let day_temp_7 = document.getElementById("day_temp_7");
+    day_temp_7.textContent = `${Math.round(forecastData.daily[7].temp.min)} / ${Math.round(forecastData.daily[1].temp.max)}`;
+    let day_icon_7 = document.getElementById("day_icon_7");
+    day_icon_7.src = `http://openweathermap.org/img/wn/${forecastData.daily[7].weather[0].icon}@2x.png`;
 }
     
-
 
 export { 
     updateCurrentWeatherDOM, 

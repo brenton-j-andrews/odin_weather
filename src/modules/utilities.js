@@ -30,18 +30,16 @@ function toggleUnits(isMetric) {
 
 // unixToDate converts utc Datetime to date format, which is parsed and returned as an object.
 function unixToDate(unixDt) {
-    console.log(unixDt);
-    const date = toDate(unixDt);
+    let date = toDate(unixDt);
 
-    console.log(date);
-    const formatted_date = format(date, "iiii, MMMM do yyyy");
-    console.log(formatted_date);
+    let day_of_week = format(date, "iiii");
+    let formatted_date = format(date, "iiii, MMMM do yyyy");
+    let local_time = format(date, "HH:mm");
 
-    const local_time = format(date, "HH:mm");
-
-    const date_information = {
+    let date_information = {
         "month_day_year": formatted_date,
-        "local_time": local_time
+        "local_time": local_time,
+        "day_of_week": day_of_week
     }
 
     return date_information;
