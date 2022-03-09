@@ -5,7 +5,7 @@ import toDate from 'date-fns/fromUnixTime';
 
 // Convert wind direction (in degrees) to cardinal points.
 function degreesToCardinal(degrees) {
-    let cardinal_directions = ["North", "Northeast", "East", "Southeast", "South", "Southwest", "West", "Northwest"];
+    let cardinal_directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
     let index = Math.floor((degrees / 360) * 8);
     return cardinal_directions[index];
 }

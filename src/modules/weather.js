@@ -1,4 +1,5 @@
 import * as util from "./utilities";
+import errorDOM from "./dom";
 
 // Functions to fetch and parse weather data.
 async function fetchCurrentData(api_url) {
@@ -6,7 +7,8 @@ async function fetchCurrentData(api_url) {
     try {
         const response = await fetch(api_url, {mode: 'cors'});
         if (!response.ok) {
-            console.log(`City ${location} isn't valid, try again!`);
+            errorDOM();
+            console.log(`Location isn't valid, try again!`);
         }
     
         const weatherData = parseCurrentData(await response.json());
